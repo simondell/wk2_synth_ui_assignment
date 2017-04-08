@@ -1,0 +1,21 @@
+{
+  "name": "wk2_assessment",
+  "version": "1.0.0",
+  "description": "A synth with uI",
+  "main": "src/index.js",
+  "scripts": {
+    "serve": "livereloadx -s src/"
+  },
+  "keywords": [
+    "synth",
+    "nexusui",
+    "futurelearn",
+    "webaudioapi"
+  ],
+  "author": "Simon Dell",
+  "license": "ISC",
+  "devDependencies": {
+    "livereloadx": "^0.3.9"
+  },
+  "dependencies": {}
+}
