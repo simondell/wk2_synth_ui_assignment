@@ -29,18 +29,19 @@ main {
 h1, p { margin: 0; }
 
 section {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	align-items: center;
 	box-sizing: border-box;
 	padding: 10px;
 	border: 1px solid white;
 	width: 50%;
 }
 
-#boom {
-	display: flex;
-	flex-flow: column nowrap;
-	justify-content: space-between;
-	align-items: center;
-}
-
 #boomTilt { display: none; }
 #boomButton { align-self: flex-end; }
+
+#smackPad {
+	align-self: flex-start;
+}
