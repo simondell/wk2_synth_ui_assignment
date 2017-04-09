@@ -11,21 +11,41 @@
 		<h1>EvilDrum</h1>
 		<p>Works best on your phone, with screen rotation turned off.</p>
 	</header>
-	<section>
-		<canvas id="boomTilt" nx="tilt"></canvas>
-		<canvas
-			id="boomButton"
-			nx="button"
-			width="100"
-			height="100">
-		</canvas>
-	</section>
-	<section>2</section>
-	<section>3</section>
-	<section>4</section>
+
+	<main>
+		<section id="boom">
+			<canvas id="boomDecayDial"
+				nx="dial"
+				width="75"
+				label="Boom Decay"
+				min="0"
+				max="4"
+			></canvas>
+			<canvas id="boomTilt" nx="tilt"></canvas>
+			<canvas
+				id="boomButton"
+				nx="button"
+				width="100"
+				height="100">
+			</canvas>
+		</section>
+
+		<section id="smack">
+			<canvas
+				id="smackPad"
+				nx="button"
+				width="100"
+				height="100">
+			</canvas>
+		</section>
+
+		<section>3</section>
+		<section>4</section>
+	</main>
 
 
 	<script src="nexusui.js"></script>
+	<script src="main.js"></script>
 	<script src="boom.js"></script>
 </body>
 </html>

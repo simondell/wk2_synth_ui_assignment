@@ -3,25 +3,44 @@ html {
 }
 
 body {
-	box-sizing: border-box;
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: column nowrap;
 	justify-content: flex-start;
 	width: 380px;
-	height: 95%;
-	padding: 5px;
+	height: 100%;
+	margin: 0;
 	background-color: black;
-	color: #666;
+	color: #ff0000;
 	font: 400 16px monospace;
 }
 
 header {
 	border: 1px solid white;
+	padding: 5px;
+}
+
+main {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	flex-grow: 1;
 }
 
 h1, p { margin: 0; }
 
 section {
 	box-sizing: border-box;
+	padding: 10px;
 	border: 1px solid white;
+	width: 50%;
 }
+
+#boom {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#boomTilt { display: none; }
+#boomButton { align-self: flex-end; }

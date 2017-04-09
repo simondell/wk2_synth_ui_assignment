@@ -1,15 +1,4 @@
-//
-// synth
-//
-var ac = window.AudioContext || window.webkitAudioContext;
-var con = new ac();
-
-var masterAmp = con.createGain();
-masterAmp.gain.value = 0.3;
-masterAmp.connect(con.destination);
-
-// boomOsc
-function boom() {
+function Boom() {
 	var booming = false;
 	var boomOsc1, boomOsc2, boomOsc3;
 	var boomAmp = con.createGain();
@@ -48,37 +37,36 @@ function boom() {
 	boomTilt.on('*', boomTiltChanged);
 
 	return function endBoom () {
+		var boomEnd = boomDecay * 2;
 		booming = false;
 
 		var now = con.currentTime;
-		boomAmp.gain.linearRampToValueAtTime(0, now + 0.75);
-		// boomAmp.gain.setTargetAtTime(0, 0.5, 0.5);
-		boomOsc1.stop(con.currentTime + 0.76);
-		boomOsc2.stop(con.currentTime + 0.76);
-		boomOsc3.stop(con.currentTime + 0.76);
-		setTimeout(function () { 
+		boomAmp.gain.linearRampToValueAtTime(0, now + boomDecay);
+		boomOsc1.stop(now + boomEnd);
+		boomOsc2.stop(now + boomEnd);
+		boomOsc3.stop(now + boomEnd);
+		setTimeout( function () {
 			boomAmp.disconnect(masterAmp);
-			boomAmp = null;
-		}, 1000 );
+		}, 1000 * boomEnd);
 	}
 }
 
-
-
-//
-// controls
-//
-nx.onload = function () {
-	boomButton.on('*', button1Changed);
-	boomButton.mode = 'toggle';
-
-	nx.colorize('border', '#666666');
-	nx.colorize('fill', '#000000');
-	nx.colorize('accent', '#FF0000');
-};
+var boomDecay = 0.75;
+function boomDecayChanged (data) {
+	boomDecay = data.value;
+}
 
 var booms = [];
 function button1Changed (data) {
-	if(!!data.press) booms.push(boom());
+	if(!!data.press) booms.push(Boom());
 	else booms.shift()();
 };
+
+//
+// begin
+function setupBoom(){
+	boomButton.on('*', button1Changed);
+	boomButton.mode = 'toggle';
+	boomDecayDial.on('*', boomDecayChanged);
+	boomDecayDial.set({value: boomDecay});
+}
