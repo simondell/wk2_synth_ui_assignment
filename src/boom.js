@@ -10,6 +10,8 @@ function Boom() {
 	boomOsc1.type = 'sine';
 	boomOsc2.type = 'sawtooth';
 	boomOsc3.type = 'square';
+	boomOsc2.detune.value = 50;
+	boomOsc3.detune.value = 50;
 
 	boomOsc1.connect(boomAmp);
 	boomOsc2.connect(boomAmp);
@@ -26,9 +28,9 @@ function Boom() {
 		if(!booming) return;
 
 		// z controls freq (steer with your phone)
-		boomOsc1.frequency.value = data.z * 0.98;
-		boomOsc2.frequency.value = data.z * 1.01;
-		boomOsc3.frequency.value = data.z * 0.99;
+		boomOsc1.frequency.value = data.z;
+		boomOsc2.frequency.value = data.z;
+		boomOsc3.frequency.value = data.z;
 
 		// x controls level (rotate around charger axis)
 		boomAmp.gain.setValueAtTime((data.x + 1) / 4, con.currentTime);
