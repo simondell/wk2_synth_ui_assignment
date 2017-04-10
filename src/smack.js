@@ -38,9 +38,13 @@ function Smack (data) {
 	smackAmp.connect(smackFilter);
 
 	smackSource.start();
-	smackAmp.gain.linearRampToValueAtTime(1, now + adsr[0] * 4);
-	smackAmp.gain.linearRampToValueAtTime(adsr[2] / 2, now + adsr[1] * 4);
-	smackAmp.gain.linearRampToValueAtTime(0, now + adsr[3] * 4);
+	var A = now + adsr[0] / 2.5; // max 0.4s
+	var D = A + adsr[1] * 2; // max 2s
+	var S = adsr[2] / 2; // max 0.5
+	var R = D + adsr[3] * 4; // max 4s
+	smackAmp.gain.linearRampToValueAtTime(1, A);
+	smackAmp.gain.linearRampToValueAtTime(S, D);
+	smackAmp.gain.linearRampToValueAtTime(0, R);
 }
 
 
@@ -55,15 +59,13 @@ function smackADSRChanged (data) {
 }
 
 function smackFilterRateChanged (data) {
-console.log(data)
 	smackRate = data.value;
 	smackLFO.frequency.value = smackRate * 20;
 }
 
 function smackFilterDepthChanged (data) {
-console.log(data)
 	smackDepth = data.value;
-	smackLFOAmp.gain.value = smackDepth * 1000;
+	smackLFOAmp.gain.value = smackDepth * 2000;
 }
 
 var smacks = [];
