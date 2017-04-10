@@ -1,21 +1,21 @@
-html {
+html, body {
 	height: 100%;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
 }
 
 body {
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: flex-start;
-	width: 380px;
-	height: 95%;
-	margin: 0;
-	background-color: black;
-	color: #ff0000;
+	width: 100%;
+	background-color: #ff0000;
+	color: black;
 	font: 400 16px monospace;
 }
 
 header {
-	border: 1px solid white;
 	padding: 5px;
 }
 
@@ -35,13 +35,8 @@ section {
 	align-items: center;
 	box-sizing: border-box;
 	padding: 10px;
-	border: 1px solid white;
 	width: 50%;
 }
 
+canvas { margin: 5px 0; }
 #boomTilt { display: none; }
-#boomButton { align-self: flex-end; }
-
-#smackPad {
-	align-self: flex-start;
-}

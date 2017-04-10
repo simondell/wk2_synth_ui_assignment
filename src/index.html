@@ -3,13 +3,14 @@
 <head>
 	<title>Week 2 Assessment - a synth &amp; UI</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	<header>
 		<h1>EvilDrum</h1>
 		<p>Works best on your phone, with screen rotation turned off.</p>
+		<p>Try moving the phone around, or holding at different angles.</p>
 	</header>
 
 	<main>
@@ -25,9 +26,10 @@
 			<canvas
 				id="boomButton"
 				nx="button"
-				width="100"
-				height="100">
-			</canvas>
+				width="150"
+				height="150"
+				label="BOOM"
+			></canvas>
 		</section>
 
 		<section id="smack">
@@ -35,32 +37,31 @@
 				nx="multislider"
 				id="smackADSR"
 				width="160"
+				label="A D S R"
 			>
 			</canvas>
-			<div>
-				<canvas
-					id="smackFilterRate"
-					nx="slider"
-					width="160"
-					height="30"
-				></canvas>
-				<canvas
-					id="smackFilterDepth"
-					nx="slider"
-					width="160"
-					height="30"
-				></canvas>
-			</div>
+			<canvas
+				id="smackFilterRate"
+				nx="slider"
+				width="160"
+				height="60"
+				label="rate"
+			></canvas>
+			<canvas
+				id="smackFilterDepth"
+				nx="slider"
+				width="160"
+				height="60"
+				label="depth"
+			></canvas>
 			<canvas
 				id="smackPad"
 				nx="button"
-				width="100"
-				height="100">
-			</canvas>
+				width="150"
+				height="150"
+				label="SMACK"
+			></canvas>
 		</section>
-
-		<section>3</section>
-		<section>4</section>
 	</main>
 
 
